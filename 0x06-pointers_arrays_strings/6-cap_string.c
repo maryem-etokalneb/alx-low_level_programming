@@ -1,39 +1,25 @@
 #include "main.h"
-
 /**
- * cap_string - Capitalizes all words of a string.
- * @str: The string to be capitalized.
- *
- * Return: A pointer to the changed string.
+ * *cap_string - function
+ * @str: Pointer
+ * Return: pointer return to function.
  */
+
 char *cap_string(char *str)
 {
-	int index = 0;
+	int symb[14] = {' ', '\t', '\n', ',', ';', '.', '!',
+		'?', '"', '(', ')', '{', '}'};
+	int i, j;
 
-	while (str[index])
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		while (!(str[index] >= 'a' && str[index] <= 'z'))
-			index++;
-
-		if (str[index - 1] == ' ' ||
-		    str[index - 1] == '\t' ||
-		    str[index - 1] == '\n' ||
-		    str[index - 1] == ',' ||
-		    str[index - 1] == ';' ||
-		    str[index - 1] == '.' ||
-		    str[index - 1] == '!' ||
-		    str[index - 1] == '?' ||
-		    str[index - 1] == '"' ||
-		    str[index - 1] == '(' ||
-		    str[index - 1] == ')' ||
-		    str[index - 1] == '{' ||
-		    str[index - 1] == '}' ||
-		    index == 0)
-			str[index] -= 32;
-
-		index++;
+		if (str[0] >= 97 && str[0] <= 122)
+	{
+			str[0] = str[0] - 32;
 	}
-
+	for (j = 0; j < 14; j++)
+		if (str[i] >= 97 && str[i] <= 122 && str[i - 1] == symb[j])
+			str[i] = str[i] - 32;
+	}
 	return (str);
 }
-
